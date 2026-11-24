@@ -1,0 +1,816 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow & Bloom | Candle Boutique</title>
+
+<!-- BOOTSTRAP -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- AOS ANIMATION -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --olive:#68764a;
+ --dark:#28351f;
+ --cream:#f8f3e8;
+ --red:#a93b32;
+ --gold:#d5a84c;
+ --white:#fff;
+}
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+body{
+ font-family:'Poppins',sans-serif;
+ background:var(--cream);
+ color:#333;
+}
+
+h1,h2,h3,h4{
+ font-family:'Playfair Display',serif;
+}
+
+.navbar{
+ background:#28351f;
+ padding:17px;
+}
+
+.navbar-brand{
+ color:#f5d98e!important;
+ font-family:'Playfair Display',serif;
+ font-size:27px;
+ font-weight:bold;
+}
+
+.nav-link{
+ color:white!important;
+ margin:0 10px;
+ transition:.3s;
+}
+
+.nav-link:hover{
+ color:#e4bd68!important;
+}
+
+.page{
+ display:none;
+ min-height:75vh;
+}
+
+.page.active{
+ display:block;
+}
+
+.hero{
+ min-height:650px;
+ background:linear-gradient(90deg,rgba(22,35,19,.78),rgba(22,35,19,.15)),
+ url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4OoUrzPPI28abtMQqGanSrhYbWEfnuEUe0zLvW1jOrg&s=10');
+ background-size:cover;
+ background-position:center;
+ display:flex;
+ align-items:center;
+ color:white;
+}
+
+.hero-content{
+ max-width:650px;
+ padding:60px 25px;
+}
+
+.hero h1{
+ font-size:65px;
+ line-height:1.15;
+}
+
+.hero p{
+ font-size:17px;
+ margin:25px 0;
+}
+
+.btn-custom{
+ background:var(--red);
+ color:white;
+ padding:13px 30px;
+ border-radius:30px;
+ border:none;
+ text-decoration:none;
+ display:inline-block;
+ transition:.3s;
+}
+
+.btn-custom:hover{
+ background:var(--gold);
+ color:#222;
+ transform:translateY(-3px);
+}
+
+.section-title{
+ color:var(--dark);
+ font-size:43px;
+ text-align:center;
+ margin-bottom:15px;
+}
+
+.subtitle{
+ text-align:center;
+ color:#777;
+ margin-bottom:45px;
+}
+
+.section-space{
+ padding:75px 0;
+}
+
+.feature-card{
+ background:white;
+ border-radius:20px;
+ overflow:hidden;
+ box-shadow:0 5px 20px #00000012;
+ transition:.4s;
+ height:100%;
+}
+
+.feature-card:hover{
+ transform:translateY(-10px);
+ box-shadow:0 15px 30px #00000020;
+}
+
+.feature-card img{
+ width:100%;
+ height:260px;
+ object-fit:cover;
+}
+
+.feature-card .content{
+ padding:22px;
+}
+
+.feature-card h4{
+ color:var(--olive);
+}
+
+.circle-img{
+ width:230px;
+ height:230px;
+ object-fit:cover;
+ border-radius:50%;
+}
+
+.oval-img{
+ width:100%;
+ height:310px;
+ object-fit:cover;
+ border-radius:50%;
+}
+
+.arch-img{
+ width:100%;
+ height:330px;
+ object-fit:cover;
+ border-radius:150px 150px 20px 20px;
+}
+
+.round-img{
+ width:100%;
+ height:280px;
+ object-fit:cover;
+ border-radius:25px;
+}
+
+.about-box{
+ background:#e5e9d9;
+ border-radius:25px;
+ padding:40px;
+}
+
+.stats{
+ background:var(--olive);
+ color:white;
+ text-align:center;
+ padding:45px 10px;
+}
+
+.stats h2{
+ color:#f4d58c;
+ font-size:40px;
+}
+
+.product-price{
+ color:var(--red);
+ font-size:20px;
+ font-weight:bold;
+}
+
+.table thead{
+ background:var(--dark);
+ color:white;
+}
+
+.table thead th{
+ background:var(--dark);
+ color:white;
+}
+
+.founder-section{
+ background:#e8e5d5;
+ padding:55px;
+ border-radius:25px;
+}
+
+.founder-img{
+ width:100%;
+ height:450px;
+ object-fit:cover;
+ border-radius:50% 50% 20px 20px;
+}
+
+.gallery-img{
+ width:100%;
+ height:300px;
+ object-fit:cover;
+ border-radius:20px;
+ transition:.4s;
+}
+
+.gallery-img:hover{
+ transform:scale(1.04);
+}
+
+.video-box{
+ background:#28351f;
+ color:white;
+ padding:35px;
+ border-radius:20px;
+ text-align:center;
+}
+
+iframe{
+ width:100%;
+ height:350px;
+ border:0;
+ border-radius:15px;
+}
+
+.contact-box{
+ background:white;
+ padding:35px;
+ border-radius:20px;
+ box-shadow:0 5px 20px #00000012;
+}
+
+input,textarea,select{
+ width:100%;
+ padding:13px;
+ border:1px solid #ddd;
+ border-radius:8px;
+ margin-bottom:15px;
+}
+
+footer{
+ background:#26321e;
+ color:white;
+ padding:55px 0 20px;
+}
+
+footer h4{
+ color:#e8c777;
+}
+
+footer a{
+ color:#eee;
+ text-decoration:none;
+ display:block;
+ margin:10px 0;
+}
+
+footer a:hover{
+ color:#e8c777;
+}
+
+footer p{
+ color:#ddd;
+}
+
+.badge-custom{
+ background:#a93b32;
+ color:white;
+ padding:8px 15px;
+ border-radius:20px;
+}
+
+@media(max-width:768px){
+ .hero h1{font-size:42px;}
+ .hero{min-height:550px;}
+ .section-title{font-size:32px;}
+ .founder-section{padding:25px;}
+ .founder-img{height:330px;}
+ .navbar-brand{font-size:22px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<div class="container">
+<a class="navbar-brand" href="#" onclick="showPage('home')">🕯 Glow & Bloom</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('home')">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('about')">About</a></li>
+<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('products')">Products</a></li>
+<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('founder')">Founder</a></li>
+<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('gallery')">Gallery</a></li>
+<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('contact')">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+
+<section class="hero">
+<div class="container">
+<div class="hero-content" data-aos="fade-right">
+<span class="badge-custom">LIGHTS LOW pHONES DOWN</span>
+<h1> Let your life burn like a candle, but never go out in the darkness</h1>
+<p>Discover natural, handmade candles created to bring warmth, fragrance and peaceful moments into your home.</p>
+<button class="btn-custom" onclick="showPage('products')">Explore Collection →</button>
+</div>
+</div>
+</section>
+
+<section class="section-space">
+<div class="container">
+<h2 class="section-title">Welcome to Glow & Bloom</h2>
+<p class="subtitle">Where every candle tells a beautiful story.</p>
+
+<div class="row align-items-center g-5">
+<div class="col-md-6" data-aos="fade-right">
+<img class="arch-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU0zlgCawx90Osv3xdgNqd1RZeY57a2Vz-nNTCFwdA3Q&s=10">
+</div>
+<div class="col-md-6" data-aos="fade-left">
+<h2>Bring Nature Into Your Home</h2>
+<p>Our candles are thoughtfully designed for people who love natural fragrances, peaceful surroundings and beautiful interiors.</p>
+<p>From relaxing lavender to refreshing citrus, discover scents that make every moment special.</p>
+<button class="btn-custom" onclick="showPage('about')">Discover Our Story</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<h2>100%</h2>
+<p>Handcrafted Designs</p>
+</div>
+<div class="col-md-4">
+<h2>Natural</h2>
+<p>Inspired Fragrances</p>
+</div>
+<div class="col-md-4">
+<h2>Love</h2>
+<p>In Every Creation</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-space">
+<div class="container">
+<h2 class="section-title">Our Best Collections</h2>
+<p class="subtitle">Find your favourite candle style.</p>
+
+<div class="row g-4">
+<div class="col-md-4" data-aos="zoom-in">
+<div class="feature-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsfamBTntct7DMNsbG3fWZYQvNFXVC8OYxsd38On2jMg&s=10">
+<div class="content">
+<h4>velora candles</h4>
+<p>Beautiful floral fragrance for peaceful evenings.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4" data-aos="zoom-in">
+<div class="feature-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_12v3n251_LaAYVAybVKypxIZqr9XZLVUb02fFdSu9A&s=10">
+<div class="content">
+<h4>M ynot Candles</h4>
+<p>Elegant candles for your home and special occasions.</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4" data-aos="zoom-in">
+<div class="feature-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTe0Oa0Za3155nrS5RAM2EZU2Wxb6s0x0FpKLiE1Bn3A&s=10">
+<div class="content">
+<h4>Bright Candles</h4>
+<p>Unique shapes and colourful candle creations.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="about" class="page">
+<section class="section-space">
+<div class="container">
+<h1 class="section-title">Our Story</h1>
+<p class="subtitle">A little light makes a big difference.</p>
+
+<div class="row align-items-center g-5">
+<div class="col-md-6">
+<img class="round-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDpGAi9GBU9VE1uE9cwTHB15Ocp9DokLzQI4iaRHsoVMOC87AzRkETkyJ8&s=10">
+</div>
+<div class="col-md-6">
+<div class="about-box">
+<h2>Our Candle Journey</h2>
+<p>Glow & Bloom is a candle boutique concept built around creativity, natural beauty and handcrafted designs.</p>
+<p>We believe that candles are more than decorative objects. They create an atmosphere of comfort, warmth and happiness.</p>
+<h4>Our Mission</h4>
+<p>To bring beautiful fragrances and thoughtful candle designs into everyday life.</p>
+<h4>Our Vision</h4>
+<p>To become a favourite destination for creative, elegant and nature-inspired candles.</p>
+</div>
+</div>
+</div>
+
+<div class="section-space">
+<h2 class="section-title">Our Special Features</h2>
+<div class="row g-4 mt-3">
+<div class="col-md-4">
+<div class="feature-card p-4">
+<h3>🌿 Natural Beauty</h3>
+<p>Nature-inspired scents and elegant designs.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="feature-card p-4">
+<h3>🎨 Creative Designs</h3>
+<p>Different colours, textures and shapes.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="feature-card p-4">
+<h3>🎁 Perfect Gifts</h3>
+<p>Beautiful gifts for celebrations and special moments.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- PRODUCTS PAGE -->
+<div id="products" class="page">
+<section class="section-space">
+<div class="container">
+<h1 class="section-title">Our Candle Collection</h1>
+<p class="subtitle">Explore our beautiful handmade creations.</p>
+
+<div class="row g-4">
+<div class="col-md-4">
+<div class="feature-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV9jIaFCLPaf5bAB_44XhoLQSSaMVhIwqpx-u6lGk5BA&s=10">
+<div class="content">
+<h4>cherry frloya Candle</h4>
+<p>Soft rose and floral fragrance.</p>
+<p class="product-price">₹399</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="feature-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThAI4DSFWATW_5RhXQKckgnWdx40LHMNkEUmt8gFP8bA&s=10">
+<div class="content">
+<h4>white rum Candle</h4>
+<p>Warm and sweet vanilla fragrance.</p>
+<p class="product-price">₹449</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="feature-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw0T6gdGefeRpZtQQWBPDFR7cguaEYhdKdB6mGR_N6tg&s=10">
+<div class="content">
+<h4>rose purple Candle</h4>
+<p>Relaxing lavender fragrance.</p>
+<p class="product-price">₹499</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="feature-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW80kmj1wRMpALDrzoopXmsnVLlW0jl3aECSvsr9waNg&s=10">
+<div class="content">
+<h4>sun spark elgant</h4>
+<p>Elegant decorative luxury candle.</p>
+<p class="product-price">₹599</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="feature-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXon-Z6v_PyZg_7TBH5xUWeBZszjZfvMpZ3KCdmnbDuQ&s=10">
+<div class="content">
+<h4>warming wick</h4>
+<p>Fresh green and woody fragrance.</p>
+<p class="product-price">₹399</p>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="feature-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNP30aXo3NpQhz9Y73dyucuBsJOXmFLOAU2oHGJKQd6w&s=10">
+<div class="content">
+<h4> birthday Candle</h4>
+<p>Colourful candles for special occasions.</p>
+<p class="product-price">₹349</p>
+</div>
+</div>
+</div>
+</div>
+
+<h2 class="section-title mt-5">Product Information Table</h2>
+<div class="table-responsive mt-4">
+<table class="table table-bordered table-striped text-center align-middle">
+<thead>
+<tr>
+<th>Product</th>
+<th>Material</th>
+<th>Fragrance</th>
+<th>Burn Time</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>cherry frloya</td><td>Soy Wax</td><td>Rose</td><td>30 Hours</td><td>₹399</td></tr>
+<tr><td>white rum</td><td>Soy Wax</td><td>Vanilla</td><td>35 Hours</td><td>₹449</td></tr>
+<tr><td>rose purple</td><td>Plant Wax</td><td>Lavender</td><td>40 Hours</td><td>₹499</td></tr>
+<tr><td>sun spark elgant</td><td>Blended Wax</td><td>Floral</td><td>45 Hours</td><td>₹599</td></tr>
+<tr><td>warming wick</td>< td>Soy Wax</ td>< td>Woody</ td>< td>30 Hours</ td>< td>₹399</ td></tr>
+<tr><td> birthday Candle</ td>< td>Blended Wax</ td>< td>Sweet</ td>< td>25 Hours</ td>< td>₹349</ td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="text-muted">*Prices and product details are sample content for this website design.</p>
+
+<h2 class="section-title mt-5">Our Candle Ingredients</h2>
+<div class="table-responsive">
+<table class="table table-bordered text-center">
+<thead>
+<tr><th>Ingredient</th><th>Purpose</th><th>Category</th></tr>
+</thead>
+<tbody>
+<tr><td>Soy Wax</td><td>Wax base</td><td>Natural-origin material</td></tr>
+<tr><td>Essential Oils</td><td>Fragrance</td><td>Fragrance ingredient</td></tr>
+<tr><td>Cotton Wick</td><td>Flame support</td><td>Wick material</td></tr>
+<tr><td>Natural Dyes</td><td>Colour</td><td>Decorative ingredient</td></tr>
+<tr><td>Glass Jars</td><td>Candle containers</td><td>Packaging</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- FOUNDER PAGE -->
+<div id="founder" class="page">
+<section class="section-space">
+<div class="container">
+<h1 class="section-title">Meet Our Founder</h1>
+<p class="subtitle">The creative mind behind Glow & Bloom.</p>
+
+<div class="founder-section">
+<div class="row align-items-center g-5">
+<div class="col-md-5">
+<img class="founder-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZ-eVIGkDzwUheBx_i7c5ywfr6RvQX7uB2NdLgs9_vA&s=10" alt="Founder portrait">
+</div>
+<div class="col-md-7">
+<span class="badge-custom">FOUNDER & CREATIVE DIRECTOR</span>
+<h2 class="mt-3">The Story Behind The Light</h2>
+<h4 class="text-danger">Founder of Glow & Bloom</h4>
+<p>Glow & Bloom was created from a love of beautiful fragrances, artistic candle designs and peaceful living spaces.</p>
+<p>Our founder believes that even a small candle can make a home feel warmer and more welcoming.</p>
+<p>Through creativity, dedication and attention to detail, the brand celebrates the beauty of handmade candle creations.</p>
+<h4>Our Founder Philosophy</h4>
+<p>"Create with passion, design with love and let every little light inspire happiness."</p>
+</div>
+</div>
+</div>
+
+<div class="text-center mt-5">
+<h2>Our Values</h2>
+<p>Creativity | Quality | Nature | Happiness</p>
+</div>
+</div>
+</section>
+</div>
+
+<!-- GALLERY PAGE -->
+<div id="gallery" class="page">
+<section class="section-space">
+<div class="container">
+<h1 class="section-title">Our Candle Gallery</h1>
+<p class="subtitle">A colourful world of fragrance, creativity and light.</p>
+
+<div class="row g-4">
+<div class="col-md-4" data-aos="zoom-in">
+<img class="gallery-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs0dYtAFgKhqHZUiRW0lNfzLR1-wdV9gpoyRotN2zbRw&s=10">
+<h5 class="text-center mt-3">Natural Candle Collection</h5>
+</div>
+<div class="col-md-4" data-aos="zoom-in">
+<img class="gallery-img" style="border-radius:50%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzfhuD2X4PNfLxSlYUoT38BUW9GaCODcnYYTHCNgt_Ag&s=10">
+<h5 class="text-center mt-3">Luxury Candle Designs</h5>
+</div>
+<div class="col-md-4" data-aos="zoom-in">
+<img class="gallery-img" style="border-radius:150px 150px 15px 15px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw-1gjLV_61DCntGIlXBD_T-gwFFGHPIABGg_JS7_PYQ&s=10">
+<h5 class="text-center mt-3">Decorative Candles</h5>
+</div>
+<div class="col-md-4">
+<img class="gallery-img" style="border-radius:50% 20% 50% 20%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ4VsEJAA5iWhQVnChhKRFZpkZujF4qMdO5rDHumJWMg&s=10">
+<h5 class="text-center mt-3">Floral Inspiration</h5>
+</div>
+<div class="col-md-4">
+<img class="gallery-img" style="border-radius:50%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc4qPelsWpPh2pFcymfxpRGVEOTO9-477RIxEOQc-Hig&s=10">
+<h5 class="text-center mt-3">Warm Candle Lights</h5>
+</div>
+<div class="col-md-4">
+<img class="gallery-img" style="border-radius:20px 100px 20px 100px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIYwQXeYjCIlC8mdi5xp5f4flbFVeieMtI3wVPpz68XA&s=10">
+<h5 class="text-center mt-3">Artistic Creations</h5>
+</div>
+</div>
+
+<div class="video-box mt-5">
+<h2>Our Candle Making Inspiration</h2>
+<p>Watch candle-making ideas and creative inspiration.</p>
+<div class="ratio ratio-16x9 mt-3">
+<iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Candle making video" allowfullscreen></iframe>
+</div>
+<p class="mt-3">Replace VIDEO_ID with a valid public YouTube video ID to display your video.</p>
+</div>
+
+</div>
+</section>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="contact" class="page">
+<section class="section-space">
+<div class="container">
+<h1 class="section-title">Contact Us</h1>
+<p class="subtitle">We would love to hear from you.</p>
+
+<div class="row g-5">
+<div class="col-md-6">
+<div class="contact-box">
+<h3>Send Us A Message</h3>
+<form onsubmit="sendMessage(event)">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<select required>
+<option value="">Select Subject</option>
+<option>Product Enquiry</option>
+<option>Custom Candle Order</option>
+<option>Gift Collection</option>
+<option>Other</option>
+</select>
+<textarea rows="5" placeholder="Your Message" required></textarea>
+<button type="submit" class="btn-custom">Submit Message</button>
+</form>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="contact-box">
+<h3>Visit Our Store</h3>
+<p>📍 Bengaluru, Karnataka, India</p>
+<p>✉ Email: hello@glowandbloom.com</p>
+<p>🕒 Monday – Saturday</p>
+<p>Opening Hours: 10 AM – 7 PM</p>
+<h4>Find Us Here</h4>
+<iframe src="https://www.google.com/maps?q=Bengaluru,Karnataka,India&output=embed" loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="row g-4">
+<div class="col-md-4">
+<h4>🕯 Glow & Bloom</h4>
+<p>Handcrafted candles, natural inspiration and beautiful moments. Let your home shine with warmth and happiness.</p>
+</div>
+
+<div class="col-md-2">
+<h4>Quick Links</h4>
+<a href="#" onclick="showPage('home')">Home</a>
+<a href="#" onclick="showPage('about')">About Us</a>
+<a href="#" onclick="showPage('products')">Products</a>
+<a href="#" onclick="showPage('founder')">Founder</a>
+</div>
+
+<div class="col-md-3">
+<h4>Our Collections</h4>
+<a href="#" onclick="showPage('products')">Floral Candles</a>
+<a href="#" onclick="showPage('products')">Luxury Candles</a>
+<a href="#" onclick="showPage('products')">Decorative Candles</a>
+<a href="#" onclick="showPage('gallery')">Photo Gallery</a>
+</div>
+
+<div class="col-md-3">
+<h4>Visit Us</h4>
+<p>Bengaluru, Karnataka, India</p>
+<p>hello@glowandbloom.com</p>
+<p>Monday – Saturday</p>
+</div>
+</div>
+
+<hr>
+<div class="text-center">
+<p>© 2026 Glow & Bloom Candle Boutique | Made with ❤️</p>
+</div>
+</div>
+</footer>
+
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+AOS.init({
+ duration:1000,
+ once:true
+});
+
+// SEPARATE PAGE NAVIGATION
+function showPage(pageName){
+ document.querySelectorAll('.page').forEach(function(page){
+  page.classList.remove('active');
+ });
+
+ document.getElementById(pageName).classList.add('active');
+
+ window.scrollTo({
+  top:0,
+  behavior:'smooth'
+ });
+
+ // Close mobile navbar after selecting a page
+ const menu=document.getElementById('menu');
+ const bsCollapse=bootstrap.Collapse.getInstance(menu);
+ if(bsCollapse){
+  bsCollapse.hide();
+ }
+
+ AOS.refresh();
+}
+
+// CONTACT FORM DEMO
+function sendMessage(event){
+ event.preventDefault();
+ alert("Thank you! Your message has been received in this demo.");
+ event.target.reset();
+}
+</script>
+
+</body>
+</html>
